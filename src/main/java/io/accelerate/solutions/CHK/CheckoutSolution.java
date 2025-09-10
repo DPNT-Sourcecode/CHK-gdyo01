@@ -35,10 +35,27 @@ public class CheckoutSolution {
             int price = PRICE_MAP.get(sku);
 
             if (sku == 'A') {
-                totalPrice += (count / 3) * 130 + (count % 3) * price;
+                int fivePacks = count / 5;
+                totalPrice = fivePacks * 200;
+                count %= 5;
+                int threePacks = count / 3;
+                totalPrice += threePacks * 130;
+                count %= 3;
+                totalPrice += count * price;
             } else if (sku == 'B') {
-                totalPrice += (count / 2) * 45 + (count % 2) * price;
-            } else {
+                int twoPacks = count / 2;
+                totalPrice += twoPacks * 45;
+                count %= 2;
+                totalPrice += count * price;    
+            } else if (sku == 'E') {
+                int freeB = count / 2;
+                int countB = itemCounts.getOrDefault('B', 0);
+                int payableB = Math.max(0, countB - freeB);
+                totalPrice += payableB * PRICE_MAP.get('B');
+                totalPrice += count * price;
+            } 
+            
+            else {
                 totalPrice += count * price;
             }
         }
@@ -47,5 +64,6 @@ public class CheckoutSolution {
 
     }
 }
+
 
 
