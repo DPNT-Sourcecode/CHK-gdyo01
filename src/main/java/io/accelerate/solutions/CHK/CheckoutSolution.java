@@ -31,7 +31,7 @@ public class CheckoutSolution {
         put('W', 20);
         put('X', 90);
         put('Y', 10);
-        put('Z', 50);   
+        put('Z', 50);
     }};
 
     public Integer checkout(String skus) {
@@ -40,12 +40,13 @@ public class CheckoutSolution {
         }
 
         Map<Character, Integer> itemCounts = new HashMap<>();
-
         for (char sku : skus.toCharArray()) {
-            if(!PRICE_MAP.containsKey(sku)) {
-                return -1;
-            }
+            if (!PRICE_MAP.containsKey(sku)) return -1;
             itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) + 1);
+        }
+
+        if (skus.isEmpty()) {
+            return 0;
         }
 
         int countA = itemCounts.getOrDefault('A', 0);
@@ -219,3 +220,4 @@ public class CheckoutSolution {
         return total;
     }
 }
+
