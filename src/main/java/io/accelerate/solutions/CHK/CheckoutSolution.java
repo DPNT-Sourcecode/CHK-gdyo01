@@ -24,7 +24,7 @@ public class CheckoutSolution {
         put('P', 50);
         put('Q', 30);
         put('R', 50);
-        put('S', 30);
+        put('S', 20);
         put('T', 20);
         put('U', 40);
         put('V', 50);
@@ -107,6 +107,8 @@ public class CheckoutSolution {
         total += chargeableM * PRICE_MAP.get('M');
         total += o * PRICE_MAP.get('O');
         total += w * PRICE_MAP.get('W');
+
+        total += applyGroupSTXYZ(counts);
         
         total += s * PRICE_MAP.get('S');
         total += t * PRICE_MAP.get('T');
@@ -115,7 +117,37 @@ public class CheckoutSolution {
         total += z * PRICE_MAP.get('Z');
 
 
+        return total;
+    }
 
+    private int applyGroupSTXYZ(Map<Character, Integer> counts) {
+        int s = counts.getOrDefault('S', 0);
+        int t = counts.getOrDefault('T', 0);
+        int x = counts.getOrDefault('X', 0);
+        int y = counts.getOrDefault('Y', 0);
+        int z = counts.getOrDefault('Z', 0);
+
+        int totalItems = s + t + x + y + z;
+        int groups = totalItems / 3;
+        if (groups == 0) return 0;
+
+        char[] order = new char[] {'Z', 'S', 'T', 'Y', 'X'};
+
+        int total = 0;
+        for (int g = 0; g < groups; g++) {
+            int picked = 0;
+            while (picked < 3) {
+                for (char sku : order) {
+                    int c = counts.getOrDefault(sku, 0);
+                    if (c > 0) {
+                        counts.put(sku, c - 1);
+                        picked++;
+                        break;
+                    }
+                }
+            }
+            total += 45;
+        }
         return total;
     }
 
@@ -217,3 +249,4 @@ public class CheckoutSolution {
         return total;
     }
 }
+
