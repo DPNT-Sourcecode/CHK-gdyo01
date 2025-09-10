@@ -16,7 +16,7 @@ public class CheckoutSolution {
         put('H', 10);
         put('I', 35);
         put('J', 60);
-        put('K', 80);
+        put('K', 70);
         put('L', 90);
         put('M', 15);
         put('N', 40);
@@ -91,24 +91,20 @@ public class CheckoutSolution {
         total += priceF(f);
         total += priceU(u);
 
-        total += priceA(a);          // A: 5 for 200, then 3 for 130, then singles
-        total += priceB(chargeableB);// B after E-frees: 2 for 45, then singles
-        total += priceH(h);          // H: 10 for 80, then 5 for 45, then singles
-        total += priceK(k);          // K: 2 for 150
-        total += priceP(p);          // P: 5 for 200
-        total += priceQ(chargeableQ);// Q after R-frees: 3 for 80
-        total += priceV(v);          // V: 3 for 130, then 2 for 90, then singles
-
-        // -----------------------------
-        // Singles (no multibuy on these after handling freebies)
-        // -----------------------------
+        total += priceA(a);          
+        total += priceB(chargeableB);
+        total += priceH(h);          
+        total += priceK(k);          
+        total += priceP(p);          
+        total += priceQ(chargeableQ);
+        total += priceV(v);          
         total += c * PRICE_MAP.get('C');
         total += d * PRICE_MAP.get('D');
         total += g * PRICE_MAP.get('G');
         total += i * PRICE_MAP.get('I');
         total += j * PRICE_MAP.get('J');
         total += l * PRICE_MAP.get('L');
-        total += chargeableM * PRICE_MAP.get('M'); // M after N-frees
+        total += chargeableM * PRICE_MAP.get('M');
         total += o * PRICE_MAP.get('O');
         total += s * PRICE_MAP.get('S');
         total += t * PRICE_MAP.get('T');
@@ -119,8 +115,6 @@ public class CheckoutSolution {
 
         return total;
     }
-
-    // -------- Pricing helpers --------
 
     private int priceA(int count) {
         int total = 0;
@@ -148,7 +142,7 @@ public class CheckoutSolution {
 
     private int priceF(int count) {
         int total = 0;
-        int triples = count / 3; // each triple costs 2*10 = 20
+        int triples = count / 3; 
         total += triples * (2 * PRICE_MAP.get('F'));
         total += (count % 3) * PRICE_MAP.get('F');
         return total;
@@ -156,7 +150,7 @@ public class CheckoutSolution {
 
     private int priceH(int count) {
         int total = 0;
-        int tenPacks = count / 10; // larger bundle first
+        int tenPacks = count / 10; 
         total += tenPacks * 80;
         count %= 10;
 
@@ -200,7 +194,7 @@ public class CheckoutSolution {
 
     private int priceU(int count) {
         int total = 0;
-        int groups4 = count / 4; // every 4 items pay for 3
+        int groups4 = count / 4; 
         total += groups4 * (3 * PRICE_MAP.get('U'));
         total += (count % 4) * PRICE_MAP.get('U');
         return total;
@@ -208,17 +202,18 @@ public class CheckoutSolution {
 
     private int priceV(int count) {
         int total = 0;
-        int packs3 = count / 3; // larger bundle first (3 for 130)
+        int packs3 = count / 3; 
         total += packs3 * 130;
         count %= 3;
 
-        int packs2 = count / 2; // then 2 for 90
+        int packs2 = count / 2; 
         total += packs2 * 90;
         count %= 2;
 
-        total += count * PRICE_MAP.get('V'); // singles
+        total += count * PRICE_MAP.get('V'); 
         return total;
     }
 }
+
 
 
