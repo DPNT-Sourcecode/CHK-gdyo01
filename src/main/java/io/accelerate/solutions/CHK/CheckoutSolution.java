@@ -48,6 +48,8 @@ public class CheckoutSolution {
         totalPrice += countC * PRICE_MAP.get('C');
         totalPrice += countD * PRICE_MAP.get('D');
 
+        totalPrice += priceF(countF);
+
         return totalPrice;
     }
 
@@ -74,7 +76,15 @@ public class CheckoutSolution {
         total += countB * PRICE_MAP.get('B');
         return total;
     }
+
+    private int priceF(int countF) {
+        int total = 0;
+        int chargeableF = countF - (countF / 3);
+        total += chargeableF * PRICE_MAP.get('F');
+        return total;
+    }
 }
+
 
 
 
