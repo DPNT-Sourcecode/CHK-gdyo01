@@ -29,9 +29,9 @@ public class CheckoutSolution {
         put('U', 40);
         put('V', 50);
         put('W', 20);
-        put('X', 90);
-        put('Y', 10);
-        put('Z', 50);
+        put('X', 17);
+        put('Y', 20);
+        put('Z', 21);
     }};
 
     public Integer checkout(String skus) {
@@ -106,12 +106,15 @@ public class CheckoutSolution {
         total += l * PRICE_MAP.get('L');
         total += chargeableM * PRICE_MAP.get('M');
         total += o * PRICE_MAP.get('O');
+        total += w * PRICE_MAP.get('W');
+        
         total += s * PRICE_MAP.get('S');
         total += t * PRICE_MAP.get('T');
-        total += w * PRICE_MAP.get('W');
         total += x * PRICE_MAP.get('X');
         total += y * PRICE_MAP.get('Y');
         total += z * PRICE_MAP.get('Z');
+
+
 
         return total;
     }
@@ -165,7 +168,7 @@ public class CheckoutSolution {
     private int priceK(int count) {
         int total = 0;
         int packs2 = count / 2;
-        total += packs2 * 150;
+        total += packs2 * 120;
         count %= 2;
 
         total += count * PRICE_MAP.get('K');
@@ -214,6 +217,3 @@ public class CheckoutSolution {
         return total;
     }
 }
-
-
-
