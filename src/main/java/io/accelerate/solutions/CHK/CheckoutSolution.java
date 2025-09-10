@@ -33,6 +33,7 @@ public class CheckoutSolution {
         int countC = itemCounts.getOrDefault('C', 0);
         int countD = itemCounts.getOrDefault('D', 0);
         int countE = itemCounts.getOrDefault('E', 0);
+        int countF = itemCounts.getOrDefault('F', 0);
 
         int totalPrice = 0;
 
@@ -74,5 +75,6 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 
