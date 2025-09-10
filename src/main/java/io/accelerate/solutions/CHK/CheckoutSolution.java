@@ -54,6 +54,26 @@ public class CheckoutSolution {
         int countD = itemCounts.getOrDefault('D', 0);
         int countE = itemCounts.getOrDefault('E', 0);
         int countF = itemCounts.getOrDefault('F', 0);
+        int countG = itemCounts.getOrDefault('G', 0);
+        int countH = itemCounts.getOrDefault('H', 0);
+        int countI = itemCounts.getOrDefault('I', 0);
+        int countJ = itemCounts.getOrDefault('J', 0);
+        int countK = itemCounts.getOrDefault('K', 0);
+        int countL = itemCounts.getOrDefault('L', 0);
+        int countM = itemCounts.getOrDefault('M', 0);
+        int countN = itemCounts.getOrDefault('N', 0);
+        int countO = itemCounts.getOrDefault('O', 0);
+        int countP = itemCounts.getOrDefault('P', 0);
+        int countQ = itemCounts.getOrDefault('Q', 0);
+        int countR = itemCounts.getOrDefault('R', 0);
+        int countS = itemCounts.getOrDefault('S', 0);
+        int countT = itemCounts.getOrDefault('T', 0);
+        int countU = itemCounts.getOrDefault('U', 0);
+        int countV = itemCounts.getOrDefault('V', 0);
+        int countW = itemCounts.getOrDefault('W', 0);
+        int countX = itemCounts.getOrDefault('X', 0);
+        int countY = itemCounts.getOrDefault('Y', 0);
+        int countZ = itemCounts.getOrDefault('Z', 0);
 
         int totalPrice = 0;
 
@@ -104,6 +124,7 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
 
 
