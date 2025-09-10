@@ -27,39 +27,50 @@ public class CheckoutSolution {
             itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) + 1);
         }
 
-        int totalPrice = 0;
-        
-        for (Map.Entry<Character, Integer> entry : itemCounts.entrySet()) {
-            char sku = entry.getKey();
-            int count = entry.getValue();
-            int price = PRICE_MAP.get(sku);
+        int countA = itemCounts.getOrDefault('A', 0);
+        int countB = itemCounts.getOrDefault('B', 0);
+        int countC = itemCounts.getOrDefault('C', 0);
+        int countD = itemCounts.getOrDefault('D', 0);
+        int countE = itemCounts.getOrDefault('E', 0);
 
-            if (sku == 'A') {
-                int fivePacks = count / 5;
-                totalPrice = fivePacks * 200;
-                count %= 5;
-                int threePacks = count / 3;
-                totalPrice += threePacks * 130;
-                count %= 3;
-                totalPrice += count * price;
-            } else if (sku == 'B') {
-                int twoPacks = count / 2;
-                totalPrice += twoPacks * 45;
-                count %= 2;
-                totalPrice += count * price;    
-            } else if (sku == 'E') {
-                int freeB = count / 2;
-                int countB = itemCounts.getOrDefault('B', 0);
-                int payableB = Math.max(0, countB - freeB);
-                totalPrice += payableB * PRICE_MAP.get('B');
-                totalPrice += count * price;
-            } 
-            else {
-                totalPrice += count * price;
-            }
-        }
+        int totalPrice = 0;
+
+        totalPrice += countE * PRICE_MAP.get('E');
+        int freeBsFromE = countE / 2;
+        int chargeableB = Math.max(0, countB - freeBsFromE);
+
+        totalPrice += priceA(countA);
+
+        totalPrice += priceB(chargeableB);
+
+        totalPrice += countC * PRICE_MAP.get('C');
+        totalPrice += countD * PRICE_MAP.get('D');
 
         return totalPrice;
+    }
 
+    private int priceA(int countA) {
+        int total = 0;
+        int fives = countA / 5;
+        total += fives * 200;
+        countA %= 5;
+
+        int threes = countA / 3;
+        total += threes * 130;
+        countA %= 3;
+
+        total += countA * PRICE_MAP.get('A');
+        return total;
+    }
+
+    private int priceB(int countB) {
+        int total = 0;
+        int twos = countB / 2;
+        total += twos * 45;
+        countB %= 2;
+
+        total += countB * PRICE_MAP.get('B');
+        return total;
     }
 }
+
