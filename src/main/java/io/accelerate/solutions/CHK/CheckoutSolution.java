@@ -81,14 +81,44 @@ public class CheckoutSolution {
         int freeBsFromE = countE / 2;
         int chargeableB = Math.max(0, countB - freeBsFromE);
 
+        int freeM = countN / 3;
+        int chargeableM = Math.max(0, countM - freeM);
+
+        int freeQ = countR / 3;
+        int chargeableQ = Math.max(0, countQ - freeQ);
+
         totalPrice += priceA(countA);
+        totalPrice += priceH(countH);          
+        totalPrice += priceK(countK);          
+        totalPrice += priceP(countP); 
+        totalPrice += priceV(countV);      
 
         totalPrice += priceB(chargeableB);
+        totalPrice += priceQ(chargeableQ);
 
         totalPrice += countC * PRICE_MAP.get('C');
         totalPrice += countD * PRICE_MAP.get('D');
 
         totalPrice += priceF(countF);
+        totalPrice += priceU(countU);
+
+        totalPrice += countE * PRICE_MAP.get('E');
+        totalPrice += countN * PRICE_MAP.get('N');
+        totalPrice += countR * PRICE_MAP.get('R');
+        totalPrice += chargeableM * PRICE_MAP.get('M');
+
+
+        totalPrice += countG * PRICE_MAP.get('G');
+        totalPrice += countI * PRICE_MAP.get('I');
+        totalPrice += countJ * PRICE_MAP.get('J');
+        totalPrice += countL * PRICE_MAP.get('L');
+        totalPrice += countO * PRICE_MAP.get('O');
+        totalPrice += countS * PRICE_MAP.get('S');
+        totalPrice += countT * PRICE_MAP.get('T');
+        totalPrice += countW * PRICE_MAP.get('W');
+        totalPrice += countX * PRICE_MAP.get('X');
+        totalPrice += countY * PRICE_MAP.get('Y');
+        totalPrice += countZ * PRICE_MAP.get('Z');
 
         return totalPrice;
     }
@@ -121,6 +151,71 @@ public class CheckoutSolution {
         int total = 0;
         int chargeableF = countF - (countF / 3);
         total += chargeableF * PRICE_MAP.get('F');
+        return total;
+    }
+    private int priceH(int count) {
+        int total = 0;
+        int tenPacks = count / 10;
+        total += tenPacks * 80;
+        count %= 10;
+
+        int fivePacks = count / 5;
+        total += fivePacks * 45;
+        count %= 5;
+
+        total += count * PRICE_MAP.get('H');
+        return total;
+    }
+
+    private int priceK(int count) {
+        int total = 0;
+        int packs2 = count / 2;
+        total += packs2 * 150;
+        count %= 2;
+
+        total += count * PRICE_MAP.get('K');
+        return total;
+    }
+
+    private int priceP(int count) {
+        int total = 0;
+        int fivePacks = count / 5;
+        total += fivePacks * 200;
+        count %= 5;
+
+        total += count * PRICE_MAP.get('P');
+        return total;
+    }
+
+    private int priceQ(int count) {
+        int total = 0;
+        int packs3 = count / 3;
+        total += packs3 * 80;
+        count %= 3;
+
+        total += count * PRICE_MAP.get('Q');
+        return total;
+    }
+
+    private int priceU(int count) {
+        int total = 0;
+        int groups4 = count / 4;
+        total += groups4 * (3 * PRICE_MAP.get('U'));
+        total += (count % 4) * PRICE_MAP.get('U');
+        return total;
+    }
+
+    private int priceV(int count) {
+        int total = 0;
+        int packs3 = count / 3;
+        total += packs3 * 130;
+        count %= 3;
+
+        int packs2 = count / 2;
+        total += packs2 * 90;
+        count %= 2;
+
+        total += count * PRICE_MAP.get('V');
         return total;
     }
 }
