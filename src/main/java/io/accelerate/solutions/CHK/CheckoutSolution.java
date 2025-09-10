@@ -10,6 +10,7 @@ public class CheckoutSolution {
         put('B', 30);
         put('C', 20);
         put('D', 15);
+        put('E', 40);
     }};
 
     public Integer checkout(String skus) {
@@ -46,4 +47,5 @@ public class CheckoutSolution {
 
     }
 }
+
 
