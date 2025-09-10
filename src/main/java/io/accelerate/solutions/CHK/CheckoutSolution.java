@@ -63,14 +63,9 @@ public class CheckoutSolution {
         int p = counts.getOrDefault('P', 0);
         int q = counts.getOrDefault('Q', 0);
         int r = counts.getOrDefault('R', 0);
-        int s = counts.getOrDefault('S', 0);
-        int t = counts.getOrDefault('T', 0);
         int u = counts.getOrDefault('U', 0);
         int v = counts.getOrDefault('V', 0);
         int w = counts.getOrDefault('W', 0);
-        int x = counts.getOrDefault('X', 0);
-        int y = counts.getOrDefault('Y', 0);
-        int z = counts.getOrDefault('Z', 0);
 
         int total = 0;
 
@@ -110,11 +105,11 @@ public class CheckoutSolution {
 
         total += applyGroupSTXYZ(counts);
         
-        total += s * PRICE_MAP.get('S');
-        total += t * PRICE_MAP.get('T');
-        total += x * PRICE_MAP.get('X');
-        total += y * PRICE_MAP.get('Y');
-        total += z * PRICE_MAP.get('Z');
+        total += counts.getOrDefault('S', 0) * PRICE_MAP.get('S');
+        total += counts.getOrDefault('T', 0) * PRICE_MAP.get('T');
+        total += counts.getOrDefault('X', 0) * PRICE_MAP.get('X');
+        total += counts.getOrDefault('Y', 0) * PRICE_MAP.get('Y');
+        total += counts.getOrDefault('Z', 0) * PRICE_MAP.get('Z');
 
 
         return total;
@@ -249,4 +244,5 @@ public class CheckoutSolution {
         return total;
     }
 }
+
 
