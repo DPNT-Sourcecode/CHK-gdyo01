@@ -54,7 +54,6 @@ public class CheckoutSolution {
                 totalPrice += payableB * PRICE_MAP.get('B');
                 totalPrice += count * price;
             } 
-            
             else {
                 totalPrice += count * price;
             }
@@ -64,6 +63,3 @@ public class CheckoutSolution {
 
     }
 }
-
-
-
